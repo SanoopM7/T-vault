@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/T-vault/static/css/main.7bab27c9.css",
+    "main.js": "/T-vault/static/js/main.50bf28dc.js",
+    "static/js/787.28cb0dcd.chunk.js": "/T-vault/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Banner_img.png": "/T-vault/static/media/Banner_img.a3b30c90962afddb6571.png",
+    "index.html": "/T-vault/index.html",
+    "main.7bab27c9.css.map": "/T-vault/static/css/main.7bab27c9.css.map",
+    "main.50bf28dc.js.map": "/T-vault/static/js/main.50bf28dc.js.map",
+    "787.28cb0dcd.chunk.js.map": "/T-vault/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7bab27c9.css",
+    "static/js/main.50bf28dc.js"
+  ]
+}
