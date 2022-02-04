@@ -12,6 +12,7 @@
   align-items: center;
   padding: 0.625rem 0.625rem 0.625rem 1.688rem;
   border-bottom: solid 0.1rem #2a2e3e;
+  height: 3.688rem;
 }
 h2.all-safes__heading {
   font-size: 1.188rem;
@@ -31,6 +32,40 @@ input.all_safe_search_input {
   color: #5e627c;
   outline: none;
 }
+.all_safes_container {
+  width: 100%;
+  height: calc(100% - 3.688rem);
+}
+.safes_empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.safeImage {
+  height: 16.25rem;
+  width: 13.875;
+  background-image: url(../icons/Group.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  flex-direction: column;
+  padding: 1rem;
+}
+.safeImage > span {
+  font-size: 0.875rem;
+}
+img.safeAddButton {
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+}
+
+/* CSS for about-safe container  */
+
 .safe_banner {
   width: 100%;
   height: 11.938rem;
@@ -70,6 +105,7 @@ input.all_safe_search_input {
 }
 .secrets_nav_item {
   border-bottom: solid 0.3rem #e20074;
+  margin-bottom: -0.3rem;
 }
 .secrets_nav_item > a {
   color: #fff;

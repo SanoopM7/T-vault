@@ -2,45 +2,29 @@ import "./Head.css";
 import { NavLink } from "react-router-dom";
 
 function Head() {
-  const navItems = [
-    "Safes",
-    "VaultAppRoles",
-    "ServiceAccounts",
-    "IAMServiceAccounts",
-    "AzureActiveDirectory",
+  var navItems = [
+    { name: "Safes", link: "/Safes" },
+    { name: "Vault App Roles", link: "/VaultAppRoles" },
+    { name: "Service Accounts", link: "/ServiceAccounts" },
+    { name: "IAM Service Accounts", link: "/IAMServiceAccounts" },
+    { name: "Azure Active Directory", link: "/AzureActiveDirectory" },
   ];
   return (
     <header className="nav_bar">
       <a className="nav_logo" href="/">
         <img src="" alt="t-vault"></img>
       </a>
+
       <ul className="nav_list">
-        <li>
-          <NavLink to="/Safes" className="nav_item">
-            Safes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/VaultAppRoles" className="nav_item">
-            VaultAppRoles
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/ServiceAccounts" className="nav_item">
-            ServiceAccounts
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/IAMServiceAccounts" className="nav_item">
-            IAMServiceAccounts
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/AzureActiveDirectory" className="nav_item">
-            AzureActiveDirectory
-          </NavLink>
-        </li>
+        {navItems.map((item) => (
+          <li id={item.name}>
+            <NavLink to={item.link} className="nav_item">
+              {item.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
+
       <div className="nav_end">
         <span className="nav_end_item">
           <img src="" alt=""></img>
