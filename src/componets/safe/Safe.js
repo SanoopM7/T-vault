@@ -31,8 +31,8 @@ function Safe() {
             <img className="safeAddButton" src={safeAddButton}></img>
           </a>
           <AddSafeForm
-            open={addSafeFormOpen}
-            onclose={() => setAddSafeFormOpen(false)}
+            addSafeFormOpen={addSafeFormOpen}
+            setAddSafeFormOpen={setAddSafeFormOpen}
           />
         </div>
       </div>

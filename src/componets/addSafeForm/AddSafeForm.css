@@ -14,5 +14,60 @@
   height: 46.5rem;
   width: 43.5rem;
   z-index: 1000;
-  background-color: snow;
+  background-color: #2a2e3e;
+  padding: 3.438rem 3.75rem 3.75rem 3.75rem;
+}
+.safeForm > h1 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.safesFormInfo {
+  height: 3.563rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.813rem;
+}
+.safeDesc {
+  margin-left: 1.25rem;
+  font-size: 0.875rem;
+  color: #c4c4c4;
+}
+.inputGroup {
+  margin-bottom: 1.313rem;
+}
+.input {
+  width: 100%;
+  height: 3.125rem;
+  padding: 0.938rem;
+  outline: none;
+  margin-top: 0.5rem;
+}
+.inputHelp {
+  margin-top: 1.2rem rem;
+  color: #8b8ea6;
+  margin-top: 0.75rem;
+}
+.textArea {
+  width: 100%;
+  padding: 0.938rem;
+  outline: none;
+  margin-top: 0.5rem;
+}
+.safesFormButtonGroup {
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+  margin-left: 0.625rem;
+  width: 6.875rem;
+  height: 2.25rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background: #e20074;
+  color: #fff;
+}
+.buttonCancel {
+  background: #fff;
+  color: #e20074;
 }
