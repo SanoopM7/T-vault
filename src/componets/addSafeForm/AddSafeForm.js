@@ -1,24 +1,55 @@
 import "./AddSafeForm.css";
 import safeLogo from "../icons/icon_safe.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import store from "../../redux/store";
+import { safeCreated } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
-function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen }) {
-  const [safeName, setSafeName] = useState("");
-  const [ownerName, setOwnerName] = useState("");
-  const [safeType, setSafeType] = useState("");
-  const [safeDesc, setSafeDesc] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ safeName, ownerName, safeType });
+function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen, editSafeId }) {
+  const [inputs, setInputs] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
+  const safeLists = useSelector((state) => state.SafeReducer.safes);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+    if (
+      inputs.safeName &&
+      inputs.safeOwner &&
+      inputs.safeType &&
+      inputs.safeDescription
+    )
+      setIsDisabled(false);
   };
 
-  if (!addSafeFormOpen) return null;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let data = { ...inputs, safeId: editSafeId };
+    store.dispatch(safeCreated(data));
+    closeForm();
+  };
+  const closeForm = () => {
+    setAddSafeFormOpen(false);
+    setInputs("");
+  };
+  let singleSafe = {};
+  useEffect(() => {
+    [singleSafe] = safeLists.filter((item, i) => item.id === editSafeId);
+    if (singleSafe)
+      setInputs({
+        safeName: singleSafe.safeName,
+        safeOwner: singleSafe.safeOwner,
+        safeType: singleSafe.safeType,
+        safeDescription: singleSafe.safeDescription,
+      });
+  }, [editSafeId]);
 
   return (
     <>
       <div className="overLayStyle" />
 
-      <form className="safeForm" onSubmit={(e) => handleSubmit(e)}>
+      <form className="safeForm" onSubmit={handleSubmit}>
         <h1>Create Safe</h1>
         <div className="safesFormInfo">
           <img src={safeLogo} alt="logo"></img>
@@ -32,58 +63,58 @@ function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen }) {
         <div className="inputGroup">
           <label htmlFor="name">Safe Name</label>
           <input
-            id="name"
+            name="safeName"
             type="text"
             className="input"
             placeholder="Safe Name"
-            value={safeName}
-            onChange={(e) => setSafeName(e.target.value)}
+            value={inputs.safeName}
+            onChange={handleChange}
           />
         </div>
         <div className="inputGroup">
           <label htmlFor="owner">Owner</label>
           <input
-            id="owner"
+            name="safeOwner"
             type="text"
             className="input"
             placeholder="Owner Name"
-            value={ownerName}
-            onChange={(e) => setOwnerName(e.target.value)}
+            value={inputs.safeOwner}
+            onChange={handleChange}
           />
         </div>
         <div className="inputGroup">
           <label htmlFor="type">Type</label>
           <select
             className="input"
-            id="type"
-            value={safeType}
-            onChange={(e) => setSafeType(e.target.value)}
+            name="safeType"
+            value={inputs.safeType}
+            onChange={handleChange}
           >
             <option value="personal">Personal</option>
             <option value="other">Other</option>
           </select>
         </div>
         <div className="inputGroup">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="safeDescription">Description</label>
           <textarea
-            id="description"
+            name="safeDescription"
             type="text"
             className="textArea"
             rows="3"
             placeholder="Description"
-            value={safeDesc}
-            onChange={(e) => setSafeDesc(e.target.value)}
+            value={inputs.safeDescription}
+            onChange={handleChange}
           ></textarea>
+
           <div className="inputHelp">Please add a minimum of 10 characters</div>
         </div>
         <div className="safesFormButtonGroup">
-          <button
-            className="button buttonCancel"
-            onClick={() => setAddSafeFormOpen(false)}
-          >
+          <button className="button buttonCancel" onClick={closeForm}>
             Cancel
           </button>
-          <button className="button">+ Create</button>
+          <button className="button" disabled={isDisabled}>
+            {editSafeId ? "Update" : "+ Create"}
+          </button>
         </div>
       </form>
     </>

@@ -12,8 +12,12 @@
   z-index: 1;
   padding: 0 11.875rem;
 }
-.nav_logo {
+.nav_logo_container {
   margin-right: 3.125rem;
+  height: 3.063rem;
+}
+.nav_logo {
+  height: 100%;
 }
 /* .nav_logo > img {
   

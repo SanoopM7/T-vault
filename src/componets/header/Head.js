@@ -1,5 +1,6 @@
 import "./Head.css";
 import { NavLink } from "react-router-dom";
+import tVaultIcon from "../icons/logo.png";
 
 function Head() {
   var navItems = [
@@ -11,8 +12,8 @@ function Head() {
   ];
   return (
     <header className="nav_bar">
-      <a className="nav_logo" href="/">
-        <img src="" alt="t-vault"></img>
+      <a className="nav_logo_container" href="/">
+        <img className="nav_logo" src={tVaultIcon} alt="t-vault"></img>
       </a>
 
       <ul className="nav_list">

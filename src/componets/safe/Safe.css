@@ -42,6 +42,12 @@ input.all_safe_search_input {
   justify-content: center;
   align-items: center;
 }
+.safesList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 4rem);
+}
 .safeImage {
   height: 16.25rem;
   width: 13.875;
@@ -64,6 +70,53 @@ img.safeAddButton {
   cursor: pointer;
 }
 
+.card {
+  display: flex;
+  height: 4.75rem;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: solid 0.1rem #20232e;
+}
+.cardLogo {
+  width: 2.125rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+}
+.cardInfo {
+  margin-left: 0.938rem;
+}
+.cardInfoTime {
+  margin-top: 0.6rem;
+}
+.cardActions {
+  margin-left: auto;
+  margin-right: 1.5rem;
+}
+.cardIconContainer {
+  width: 3.2rem rem;
+  height: 3.2rem;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+img.cardIcon {
+  width: 1rem;
+  height: 1rem;
+}
+.safeAddButtonSafeList {
+  display: flex;
+  justify-content: end;
+  padding: 0 1rem 1rem 0;
+}
+
+.selected {
+  background: linear-gradient(to top, #72134b, #1d212c);
+}
+
 /* CSS for about-safe container  */
 
 .safe_banner {
@@ -73,6 +126,17 @@ img.safeAddButton {
   background-size: 100% 100%;
   margin-top: -0.5rem;
   margin-bottom: -0.6rem;
+  position: relative;
+}
+.bannerText {
+  position: absolute;
+  top: 4rem;
+  left: 22.2rem;
+  right: 4.5rem;
+}
+.safeNameBanner {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 .secrets {
   background: linear-gradient(to bottom, #151820, #2c3040);
@@ -120,4 +184,42 @@ img.safeAddButton {
 img.add_folder_icon {
   height: 1.5rem;
   width: 1.5rem;
+}
+.folderIcon {
+  height: 2.5rem;
+  width: 3rem;
+}
+.secretInfoContainer {
+  display: flex;
+  align-items: center;
+}
+.secretInfo {
+  margin-left: 1rem;
+}
+.secretAction {
+  margin-left: auto;
+}
+.cardContainer {
+  display: flex;
+}
+.secretsCount {
+  width: 100%;
+  height: 2rem;
+  padding-top: 0.6rem;
+}
+.secrets_image {
+  width: 13.75rem;
+  height: 13.75rem;
+  margin-bottom: 1rem;
+}
+.secrets_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.secrets_caption {
+  margin-bottom: 1rem;
+}
+.secretDeleteIcon {
+  height: 1.3rem;
 }
