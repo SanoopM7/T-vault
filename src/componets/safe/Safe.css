@@ -114,7 +114,7 @@ img.cardIcon {
 }
 
 .selected {
-  background: linear-gradient(to top, #72134b, #1d212c);
+  background: linear-gradient(to right, #72134b, #1d212c);
 }
 
 /* CSS for about-safe container  */

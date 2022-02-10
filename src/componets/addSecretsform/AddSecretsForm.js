@@ -25,10 +25,10 @@ function AddSecretsForm({
   return (
     <>
       <div className="overLayStyle" />
-      <form class="secrets-form" onSubmit={handleSubmit}>
-        <h1 class="secrets-form__heading">Add Folder</h1>
-        <div class="input-group">
-          <label for="name">Folder Name</label>
+      <form className="secrets-form" onSubmit={handleSubmit}>
+        <h1 className="secrets-form__heading">Add Folder</h1>
+        <div className="input-group">
+          <label htmlFor="name">Folder Name</label>
           <input
             name="secretName"
             type="text"
@@ -36,15 +36,15 @@ function AddSecretsForm({
             onChange={handleChange}
             placeholder="Folder Name"
           />
-          <div class="input-help">
+          <div className="input-help">
             Please enter lowercase alphabets, numbers and underscores only.
           </div>
         </div>
-        <div class="secrets-form__button-group">
-          <button class="button button--inverse" onClick={closeForm}>
+        <div className="secrets-form__button-group">
+          <button className="button button--inverse" onClick={closeForm}>
             Cancel
           </button>
-          <button class="button" disabled="">
+          <button className="button" disabled="">
             Save
           </button>
         </div>
