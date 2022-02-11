@@ -18,7 +18,7 @@ function Main() {
             <Route path="/Safes" element={<Safe />} />
             <Route path="/AzureActiveDirectory" element={<Active />} />
             <Route path="/IAMServiceAccounts" element={<Iam />} />
-            {/* <Route path="/Vault AppRoles" element={<Vault />} /> */}
+            <Route path="/VaultAppRoles::userName" element={<Vault />} />
             <Route path="/ServiceAccounts" element={<Service />} />
           </Routes>
         </section>

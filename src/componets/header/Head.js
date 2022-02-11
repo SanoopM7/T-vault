@@ -5,7 +5,7 @@ import tVaultIcon from "../icons/logo.png";
 function Head() {
   var navItems = [
     { name: "Safes", link: "/Safes" },
-    { name: "Vault App Roles", link: "/VaultAppRoles" },
+    { name: "Vault App Roles", link: "/VaultAppRoles:" },
     { name: "Service Accounts", link: "/ServiceAccounts" },
     { name: "IAM Service Accounts", link: "/IAMServiceAccounts" },
     { name: "Azure Active Directory", link: "/AzureActiveDirectory" },

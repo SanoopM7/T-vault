@@ -123,11 +123,11 @@ function Safe() {
             them all here
           </div>
           <button
+            className="disabledButtonCreateSafe"
             onClick={() => {
               if (selectedSafeIndex) setAddSecretsFormOpen(true);
-              else alert("plzz select safe");
+              else alert("plzz create and select safe");
             }}
-            className="button"
           >
             + Add
           </button>
@@ -143,7 +143,8 @@ function Safe() {
       <div className="all_safes">
         <header className="all-safes_header">
           <h2 className="all-safes__heading">
-            All Safes <span>({tempSafeList.length})</span>
+            All Safes{" "}
+            <span className="safesCount">({tempSafeList.length})</span>
           </h2>
           <div className="all_safe_search">
             <input
@@ -167,7 +168,7 @@ function Safe() {
           </div>
         ) : (
           <div className="safesList">
-            <ul>
+            <ul className="safesListContainer">
               {tempSafeList.map((item, index) => (
                 <li className="cardContainers">
                   <div

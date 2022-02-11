@@ -71,3 +71,6 @@
   background: #fff;
   color: #e20074;
 }
+button:disabled {
+  background: #454c5e;
+}

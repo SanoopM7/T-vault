@@ -8,8 +8,10 @@ function AddSecretsForm({
   activeSafeId,
 }) {
   const [inputs, setInputs] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
   const handleChange = (e) => {
     setInputs(e.target.value);
+    if (inputs) setIsDisabled(false);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,8 +30,11 @@ function AddSecretsForm({
       <form className="secrets-form" onSubmit={handleSubmit}>
         <h1 className="secrets-form__heading">Add Folder</h1>
         <div className="input-group">
-          <label htmlFor="name">Folder Name</label>
+          <label htmlFor="name" className="folderNameOnInput">
+            Folder Name
+          </label>
           <input
+            className="inputSecretName"
             name="secretName"
             type="text"
             value={inputs}
@@ -44,7 +49,7 @@ function AddSecretsForm({
           <button className="button button--inverse" onClick={closeForm}>
             Cancel
           </button>
-          <button className="button" disabled="">
+          <button className="button" disabled={isDisabled}>
             Save
           </button>
         </div>

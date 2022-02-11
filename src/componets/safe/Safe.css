@@ -5,6 +5,7 @@
 }
 .all_safes {
   background: #151820;
+  position: relative;
 }
 .all-safes_header {
   display: flex;
@@ -31,11 +32,17 @@ input.all_safe_search_input {
   caret-color: #5e627c;
   color: #5e627c;
   outline: none;
+  padding: 1rem;
 }
 .all_safes_container {
   width: 100%;
   height: calc(100% - 3.688rem);
 }
+.safesCount {
+  font-weight: normal;
+  color: #5e627c;
+}
+
 .safes_empty {
   display: flex;
   flex-direction: column;
@@ -46,7 +53,9 @@ input.all_safe_search_input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 4rem);
+  min-height: calc(100% - 4rem);
+  height: 0;
+  overflow-y: auto;
 }
 .safeImage {
   height: 16.25rem;
@@ -94,23 +103,28 @@ img.safeAddButton {
   margin-left: auto;
   margin-right: 1.5rem;
 }
+
 .cardIconContainer {
-  width: 3.2rem rem;
-  height: 3.2rem;
+  width: 2.2rem;
+  height: 2.2rem;
   margin-left: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 100%;
 }
+.cardIconContainer:hover {
+  background: rgba(90, 99, 122, 0.2);
+}
 img.cardIcon {
   width: 1rem;
   height: 1rem;
 }
 .safeAddButtonSafeList {
-  display: flex;
-  justify-content: end;
   padding: 0 1rem 1rem 0;
+  position: absolute;
+  left: 27rem;
+  top: 34rem;
 }
 
 .selected {
@@ -137,6 +151,8 @@ img.cardIcon {
 .safeNameBanner {
   font-size: 2rem;
   margin-bottom: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .secrets {
   background: linear-gradient(to bottom, #151820, #2c3040);
@@ -184,6 +200,7 @@ img.cardIcon {
 img.add_folder_icon {
   height: 1.5rem;
   width: 1.5rem;
+  cursor: pointer;
 }
 .folderIcon {
   height: 2.5rem;
@@ -198,19 +215,31 @@ img.add_folder_icon {
 }
 .secretAction {
   margin-left: auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 17px;
+  padding: 0.4rem;
 }
 .cardContainer {
   display: flex;
+  align-items: center;
+  height: 4rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 0.1rem solid rgba(42, 46, 62, 0.5);
 }
 .secretsCount {
   width: 100%;
   height: 2rem;
   padding-top: 0.6rem;
+  font-weight: normal;
+  color: #5e627c;
 }
 .secrets_image {
   width: 13.75rem;
   height: 13.75rem;
   margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 .secrets_empty {
   display: flex;
@@ -222,4 +251,23 @@ img.add_folder_icon {
 }
 .secretDeleteIcon {
   height: 1.3rem;
+}
+.cardInfoName {
+  text-overflow: ellipsis;
+  width: 12rem;
+  overflow: hidden;
+}
+.disabledButtonCreateSafe {
+  background: #454c5e;
+  margin-left: 0.625rem;
+  width: 6.875rem;
+  height: 2.25rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+
+  color: #fff;
+}
+.cardContainer:hover {
+  background: linear-gradient(to right, #72134b, #1d212c);
 }
