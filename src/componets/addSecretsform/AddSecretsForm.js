@@ -26,6 +26,9 @@ function AddSecretsForm({
     setAddSecretsFormOpen(false);
     setInputs("");
   };
+  const charAllow = (e) => {
+    setInputs(e.target.value.replace(/[^a-zA-Z]/gi, ""));
+  };
   if (!addSecretsFormOpen) return null;
   return (
     <>
@@ -41,7 +44,7 @@ function AddSecretsForm({
             name="secretName"
             type="text"
             value={inputs}
-            onChange={handleChange}
+            onChange={(handleChange, charAllow)}
             placeholder="Folder Name"
           />
           <div className="input-help">
