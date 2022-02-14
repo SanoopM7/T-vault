@@ -271,3 +271,83 @@ img.add_folder_icon {
 .cardContainer:hover {
   background: linear-gradient(to right, #72134b, #1d212c);
 }
+
+@media screen and (max-width: 768px) {
+  section.maincontainer {
+    padding: 1.375rem 1.875rem;
+  }
+  .about_safes {
+    display: none;
+  }
+  .safe {
+    display: flex;
+
+    height: 100%;
+  }
+  .all_safes {
+    width: 100%;
+  }
+  .nav_end {
+    display: none;
+  }
+  .nav_list {
+    display: none;
+  }
+  .nav_bar {
+    padding: 0 1.875rem;
+  }
+  h2.all-safes__heading {
+    font-size: 0.8rem;
+  }
+
+  img.safeAddButton {
+    height: 3rem;
+    width: 3rem;
+  }
+  .all_safe_search {
+    width: 15.313rem;
+  }
+  .safeImage > span {
+    font-size: 0.575rem;
+  }
+}
+@media screen and (max-width: 1518px) {
+  .nav_end {
+    display: none;
+  }
+}
+@media screen and (max-width: 5465px) and (min-width: 2040px) {
+  html {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 4099px) and (min-width: 2040px) {
+  html {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 2733px) and (min-width: 2049px) {
+  html {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 2049px) and (min-width: 1821px) {
+  html {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 1518px) and (min-width: 1241px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 1241px) and (min-width: 1092px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 1095px) {
+  .nav_list {
+    display: none;
+  }
+}
