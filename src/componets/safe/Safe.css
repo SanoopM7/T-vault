@@ -33,6 +33,7 @@ input.all_safe_search_input {
   color: #5e627c;
   outline: none;
   padding: 1rem;
+  font-size: 0.8rem;
 }
 .all_safes_container {
   width: 100%;
@@ -56,6 +57,7 @@ input.all_safe_search_input {
   min-height: calc(100% - 4rem);
   height: 0;
   overflow-y: auto;
+  position: relative;
 }
 .safeImage {
   height: 16.25rem;
@@ -123,8 +125,8 @@ img.cardIcon {
 .safeAddButtonSafeList {
   padding: 0 1rem 1rem 0;
   position: absolute;
-  left: 27rem;
-  top: 34rem;
+  right: 1rem;
+  bottom: 1rem;
 }
 
 .selected {
@@ -165,6 +167,12 @@ img.cardIcon {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.secretsList {
+  overflow: hidden;
+  min-height: calc(100% - 7rem);
+  height: 0;
+  overflow-y: auto;
 }
 .secrets_permissions_nav {
   width: auto;
@@ -265,14 +273,14 @@ img.add_folder_icon {
   font-weight: bold;
   border: none;
   cursor: pointer;
-
+  font-size: 0.8rem;
   color: #fff;
 }
 .cardContainer:hover {
   background: linear-gradient(to right, #72134b, #1d212c);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 911px) {
   section.maincontainer {
     padding: 1.375rem 1.875rem;
   }
@@ -299,13 +307,16 @@ img.add_folder_icon {
   h2.all-safes__heading {
     font-size: 0.8rem;
   }
+  .all-safes_header {
+    height: 2.688rem;
+  }
 
   img.safeAddButton {
     height: 3rem;
     width: 3rem;
   }
   .all_safe_search {
-    width: 15.313rem;
+    height: 1.8rem;
   }
   .safeImage > span {
     font-size: 0.575rem;
@@ -318,27 +329,27 @@ img.add_folder_icon {
 }
 @media screen and (max-width: 5465px) and (min-width: 2040px) {
   html {
-    font-size: 3rem;
+    font-size: 54px;
   }
 }
 @media screen and (max-width: 4099px) and (min-width: 2040px) {
   html {
-    font-size: 2.5rem;
+    font-size: 41px;
   }
 }
 @media screen and (max-width: 2733px) and (min-width: 2049px) {
   html {
-    font-size: 1.7rem;
+    font-size: 27px;
   }
 }
-@media screen and (max-width: 2049px) and (min-width: 1821px) {
+@media screen and (max-width: 2049px) and (min-width: 1822px) {
   html {
-    font-size: 1.1rem;
+    font-size: 20px;
   }
 }
-@media screen and (max-width: 1518px) and (min-width: 1241px) {
+@media screen and (max-width: 1518px) and (min-width: 1242px) {
   html {
-    font-size: 13px;
+    font-size: 15px;
   }
 }
 @media screen and (max-width: 1241px) and (min-width: 1092px) {
@@ -349,5 +360,15 @@ img.add_folder_icon {
 @media screen and (max-width: 1095px) {
   .nav_list {
     display: none;
+  }
+}
+@media screen and (max-width: 1367px) and (min-width: 1242px) {
+  html {
+    font-size: 13.8px;
+  }
+}
+@media screen and (max-width: 1242px) and (min-width: 1093px) {
+  html {
+    font-size: 12px;
   }
 }

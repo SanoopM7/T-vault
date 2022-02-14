@@ -6,21 +6,19 @@ import { safeCreated } from "../../redux/actions";
 import { useSelector } from "react-redux";
 
 function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen, editSafeId }) {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({
+    safeType: "personal",
+    safeDescription: "",
+  });
   const [isDisabled, setIsDisabled] = useState(true);
   const safeLists = useSelector((state) => state.SafeReducer.safes);
 
   const handleChange = (event) => {
+    setIsDisabled(true);
+
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
-    if (
-      inputs.safeName &&
-      inputs.safeOwner &&
-      inputs.safeType &&
-      inputs.safeDescription
-    )
-      setIsDisabled(false);
   };
 
   const handleSubmit = (event) => {
@@ -44,6 +42,17 @@ function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen, editSafeId }) {
         safeDescription: singleSafe.safeDescription,
       });
   }, [editSafeId]);
+
+  useEffect(() => {
+    console.log(inputs.safeDescription.length, "description");
+    if (
+      inputs.safeName &&
+      inputs.safeOwner &&
+      inputs.safeType &&
+      inputs.safeDescription.length >= 10
+    )
+      setIsDisabled(false);
+  }, [inputs]);
 
   return (
     <>

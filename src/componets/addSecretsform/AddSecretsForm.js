@@ -1,5 +1,5 @@
 import "./AddSecretsForm.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { secretsCreated } from "../../redux/actions";
 import store from "../../redux/store";
 function AddSecretsForm({
@@ -11,8 +11,11 @@ function AddSecretsForm({
   const [isDisabled, setIsDisabled] = useState(true);
   const handleChange = (e) => {
     setInputs(e.target.value);
-    if (inputs) setIsDisabled(false);
   };
+  useEffect(() => {
+    setIsDisabled(true);
+    if (inputs) setIsDisabled(false);
+  }, [inputs]);
   const handleSubmit = (event) => {
     event.preventDefault();
     store.dispatch(secretsCreated({ safeId: activeSafeId, secret: inputs }));
@@ -46,7 +49,7 @@ function AddSecretsForm({
           </div>
         </div>
         <div className="secrets-form__button-group">
-          <button className="button button--inverse" onClick={closeForm}>
+          <button className="button buttonCancel" onClick={closeForm}>
             Cancel
           </button>
           <button className="button" disabled={isDisabled}>

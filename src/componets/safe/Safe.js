@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Safe.css";
 import newFolderIcon from "../icons/icon-addfolder.png";
@@ -31,6 +31,9 @@ function Safe() {
   });
 
   const [selectedSafeIndex, setSelectedSafeIndex] = useState("");
+  useEffect(() => {
+    if (!editSafeId) setSelectedSafeIndex(safeLists.length);
+  }, [safeLists]);
 
   function deleteSafe(index) {
     store.dispatch(safeDeleted(index));
@@ -63,32 +66,34 @@ function Safe() {
               {singleSafe.secrets.length}
               <span> secrets</span>
             </div>
-            <ul>
-              {singleSafe.secrets.map((item) => {
-                return (
-                  <li className="cardContainer">
-                    <div className="secretInfoContainer">
-                      <img
-                        className="folderIcon"
-                        src={folderIcon}
-                        alt="Folder"
-                      />
-                      <span className="secretInfo">{item}</span>
-                    </div>
-                    <div
-                      className="secretAction"
-                      onClick={() => deleteSecret(item)}
-                    >
-                      <img
-                        src={deleteIcon}
-                        className="secretDeleteIcon"
-                        alt="delete"
-                      />
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="secretsList">
+              <ul>
+                {singleSafe.secrets.map((item) => {
+                  return (
+                    <li className="cardContainer">
+                      <div className="secretInfoContainer">
+                        <img
+                          className="folderIcon"
+                          src={folderIcon}
+                          alt="Folder"
+                        />
+                        <span className="secretInfo">{item}</span>
+                      </div>
+                      <div
+                        className="secretAction"
+                        onClick={() => deleteSecret(item)}
+                      >
+                        <img
+                          src={deleteIcon}
+                          className="secretDeleteIcon"
+                          alt="delete"
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </>
         );
       else
