@@ -39,6 +39,7 @@ function Safe() {
     store.dispatch(safeDeleted(index));
     console.log("deleteSafe", index);
     console.log(safeLists);
+    setEditSafeId("");
   }
   function editSafe(index) {
     setEditSafeId(index);
