@@ -143,3 +143,6 @@ section.maincontainer {
   padding: 3.375rem 11.875rem;
   font-size: 0.875rem;
 }
+html {
+  font-size: 112%;
+}

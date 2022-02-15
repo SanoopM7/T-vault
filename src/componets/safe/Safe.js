@@ -20,7 +20,7 @@ function Safe() {
   const [addSecretsFormOpen, setAddSecretsFormOpen] = useState(false);
   const [editSafeId, setEditSafeId] = useState("");
   const [searchKey, setSearchKey] = useState("");
-
+  const [secretIndicator, setSecretIndicator] = useState("");
   const safeLists = useSelector((state) => state.SafeReducer.safes);
 
   let tempSafeList = safeLists.filter((item) => {
@@ -32,13 +32,11 @@ function Safe() {
 
   const [selectedSafeIndex, setSelectedSafeIndex] = useState("");
   useEffect(() => {
-    if (!editSafeId) setSelectedSafeIndex(safeLists.length);
+    if (!editSafeId && !secretIndicator) setSelectedSafeIndex(safeLists.length);
   }, [safeLists]);
 
   function deleteSafe(index) {
     store.dispatch(safeDeleted(index));
-    console.log("deleteSafe", index);
-    console.log(safeLists);
     setEditSafeId("");
   }
   function editSafe(index) {
@@ -55,7 +53,15 @@ function Safe() {
           <span className="safeOwnerBanner">{singleSafe.safeOwner}</span>
         </div>
       );
-    else return "";
+    else
+      return (
+        <div className="bannerText">
+          <h1 className="safeNameBanner">Sample / SafeName</h1>
+          <span className="safeOwnerBanner">
+            A Safe is a logical unit to store the secrets. All the sa...
+          </span>
+        </div>
+      );
   };
   const secretsFromSafes = (safeId) => {
     let [singleSafe] = safeLists.filter((item, i) => item.id === safeId);
@@ -82,7 +88,9 @@ function Safe() {
                       </div>
                       <div
                         className="secretAction"
-                        onClick={() => deleteSecret(item)}
+                        onClick={() => {
+                          deleteSecret(item);
+                        }}
                       >
                         <img
                           src={deleteIcon}
@@ -109,8 +117,10 @@ function Safe() {
             </div>
             <button
               onClick={() => {
-                if (selectedSafeIndex) setAddSecretsFormOpen(true);
-                else alert("plzz select safe");
+                if (selectedSafeIndex) {
+                  setAddSecretsFormOpen(true);
+                  setSecretIndicator(true);
+                } else alert("plzz select safe");
               }}
               className="button"
             >
@@ -202,7 +212,10 @@ function Safe() {
                           src={deleteIcon}
                           alt="delete"
                           className="cardIcon"
-                          onClick={() => deleteSafe(index)}
+                          onClick={() => {
+                            deleteSafe(index);
+                            setSecretIndicator(false);
+                          }}
                         />
                       </span>
                     </div>
