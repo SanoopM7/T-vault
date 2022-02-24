@@ -49,7 +49,7 @@ function AddSecretsForm({
     setInputs("");
   };
   const charAllow = (e) => {
-    setInputs(e.target.value.replace(/[^a-zA-Z0-9]/gi, ""));
+    setInputs(e.target.value.replace(/[^a-z0-9_]/gi, ""));
   };
   if (!addSecretsFormOpen) return null;
   return (
@@ -70,7 +70,7 @@ function AddSecretsForm({
             placeholder="Folder Name"
           />
           <div className="input-help">
-            Please enter lowercase alphabets, numbers and underscores only.
+            Please enter alphabets, numbers and underscores only.
           </div>
         </div>
         <div className="secrets-form__button-group">
