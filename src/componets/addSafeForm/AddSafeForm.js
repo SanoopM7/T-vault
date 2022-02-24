@@ -47,7 +47,7 @@ function AddSafeForm({
       console.log(data1.safeId);
       var config = {
         method: "patch",
-        url: `http://localhost:3002/Safes/${data1.safeId}`,
+        url: `https://t-vault-api-1.herokuapp.com/safes/${data1.safeId}`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -56,7 +56,7 @@ function AddSafeForm({
     } else {
       var config = {
         method: "post",
-        url: "http://localhost:3002/Safes",
+        url: "https://t-vault-api-1.herokuapp.com/safes",
         headers: {
           "Content-Type": "application/json",
         },

@@ -27,7 +27,7 @@ function AddSecretsForm({
     setLoading(true);
     var config = {
       method: "patch",
-      url: `http://localhost:3002/Safes/create-secret/${activeSafeId}`,
+      url: `https://t-vault-api-1.herokuapp.com/safes/create-secret/${activeSafeId}`,
       headers: {
         "Content-Type": "application/json",
       },

@@ -32,7 +32,7 @@ function Safe() {
   // const safeLists = useSelector((state) => state.SafeReducer.safes);
 
   useEffect(() => {
-    axios.get(`http://localhost:3002/safes`).then((res) => {
+    axios.get(`https://t-vault-api-1.herokuapp.com/safes`).then((res) => {
       setSafeList(res.data);
       setLoading(false);
     });
@@ -59,7 +59,7 @@ function Safe() {
     setLoading(true);
     var config = {
       method: "delete",
-      url: `http://localhost:3002/Safes/${index}`,
+      url: `https://t-vault-api-1.herokuapp.com/safes/${index}`,
       headers: {},
     };
 
@@ -192,7 +192,7 @@ function Safe() {
     setLoading(true);
     var config = {
       method: "delete",
-      url: `http://localhost:3002/Safes/delete-secret/${selectedSafeIndex}/${secret}`,
+      url: `https://t-vault-api-1.herokuapp.com/safes/delete-secret/${selectedSafeIndex}/${secret}`,
       headers: {},
       data: data,
     };
