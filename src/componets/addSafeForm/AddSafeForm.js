@@ -4,14 +4,23 @@ import { useState, useEffect } from "react";
 import store from "../../redux/store";
 import { safeCreated } from "../../redux/actions";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
-function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen, editSafeId }) {
+function AddSafeForm({
+  addSafeFormOpen,
+  setAddSafeFormOpen,
+  editSafeId,
+  setLoading,
+  safeLists,
+  selectedSafeIndex,
+  setSelectedSafeIndex,
+}) {
   const [inputs, setInputs] = useState({
     safeType: "personal",
     safeDescription: "",
   });
   const [isDisabled, setIsDisabled] = useState(true);
-  const safeLists = useSelector((state) => state.SafeReducer.safes);
+  // const safeLists = useSelector((state) => state.SafeReducer.safes);
 
   const handleChange = (event) => {
     setIsDisabled(true);
@@ -23,8 +32,54 @@ function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen, editSafeId }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let data = { ...inputs, safeId: editSafeId };
-    store.dispatch(safeCreated(data));
+    let data1 = { ...inputs, safeId: editSafeId };
+    // store.dispatch(safeCreated(data));
+
+    var data = JSON.stringify({
+      name: data1.safeName,
+      owner: data1.safeOwner,
+      type: data1.safeType,
+      description: data1.safeDescription,
+    });
+    setLoading(true);
+    if (data1.safeId) {
+      console.log("keri");
+      console.log(data1.safeId);
+      var config = {
+        method: "patch",
+        url: `http://localhost:3002/Safes/${data1.safeId}`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+    } else {
+      var config = {
+        method: "post",
+        url: "http://localhost:3002/Safes",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+    }
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setLoading(false);
+        if (data1.safeId) {
+          setSelectedSafeIndex(data1.safeId);
+          console.log(selectedSafeIndex, "updated safe id");
+        } else {
+          setSelectedSafeIndex(response?.data?._id);
+          console.log(response.data._id, "updated safe id");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     closeForm();
   };
   const closeForm = () => {
@@ -33,18 +88,18 @@ function AddSafeForm({ addSafeFormOpen, setAddSafeFormOpen, editSafeId }) {
   };
   let singleSafe = {};
   useEffect(() => {
-    [singleSafe] = safeLists.filter((item, i) => item.id === editSafeId);
+    [singleSafe] = safeLists.filter((item, i) => item._id === editSafeId);
+    console.log(singleSafe, "safe is here");
     if (singleSafe)
       setInputs({
         safeName: singleSafe.safeName,
         safeOwner: singleSafe.safeOwner,
-        safeType: singleSafe.safeType,
-        safeDescription: singleSafe.safeDescription,
+        safeType: singleSafe.type,
+        safeDescription: singleSafe.description,
       });
   }, [editSafeId]);
 
   useEffect(() => {
-    console.log(inputs.safeDescription.length, "description");
     if (
       inputs.safeName &&
       inputs.safeOwner &&

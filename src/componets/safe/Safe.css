@@ -90,6 +90,12 @@ img.safeAddButton {
   cursor: pointer;
   border-bottom: solid 0.1rem #20232e;
 }
+.loadingGif {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 .cardLogo {
   width: 2.125rem;
   height: 2.5rem;

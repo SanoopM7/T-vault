@@ -2,10 +2,12 @@ import "./AddSecretsForm.css";
 import { useEffect, useState } from "react";
 import { secretsCreated } from "../../redux/actions";
 import store from "../../redux/store";
+import axios from "axios";
 function AddSecretsForm({
   addSecretsFormOpen,
   setAddSecretsFormOpen,
   activeSafeId,
+  setLoading,
 }) {
   const [inputs, setInputs] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
@@ -18,8 +20,28 @@ function AddSecretsForm({
   }, [inputs]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    store.dispatch(secretsCreated({ safeId: activeSafeId, secret: inputs }));
-    console.log(inputs, "step1");
+    // store.dispatch(secretsCreated({ safeId: activeSafeId, secret: inputs }));
+    var data = JSON.stringify({
+      secret: inputs,
+    });
+    setLoading(true);
+    var config = {
+      method: "patch",
+      url: `http://localhost:3002/Safes/create-secret/${activeSafeId}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setLoading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     closeForm();
   };
   const closeForm = () => {
@@ -27,7 +49,7 @@ function AddSecretsForm({
     setInputs("");
   };
   const charAllow = (e) => {
-    setInputs(e.target.value.replace(/[^a-zA-Z]/gi, ""));
+    setInputs(e.target.value.replace(/[^a-zA-Z0-9]/gi, ""));
   };
   if (!addSecretsFormOpen) return null;
   return (
