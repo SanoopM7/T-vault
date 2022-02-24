@@ -353,7 +353,7 @@ img.add_folder_icon {
     font-size: 20px;
   }
 }
-@media screen and (max-width: 1518px) and (min-width: 1242px) {
+@media screen and (max-width: 1561px) and (min-width: 1242px) {
   html {
     font-size: 15px;
   }
