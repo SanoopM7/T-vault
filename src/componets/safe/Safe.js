@@ -208,8 +208,10 @@ function Safe() {
   };
   if (loading)
     return (
-      <div class="loadingGif">
-        <img src={loadingIcon} alt="Folder" />
+      <div className="loadingGifContainer">
+        <div className="loadingGif">
+          <img src={loadingIcon} alt="Folder" />
+        </div>
       </div>
     );
   else
